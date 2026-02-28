@@ -1,0 +1,156 @@
+.artisan-detail {
+  background-color: #f1f8fc;
+  
+  // Spinner de chargement
+  .spinner-border.text-primary {
+    color: #0074c7 !important; // Bleu moyen de la palette
+    border-color: #0074c7 !important;
+  }
+  
+  // Alerte d'erreur
+  .alert-danger {
+    background-color: rgba(205, 44, 46, 0.1) !important; // #cd2c2e avec 10% d'opacité
+    border-color: rgba(205, 44, 46, 0.3) !important; // #cd2c2e avec 30% d'opacité
+    color: #384050 !important; // Gris foncé de la palette
+    
+    .alert-heading {
+      color: #cd2c2e !important; // Rouge de la palette
+    }
+    
+    .alert-link {
+      color: #0074c7 !important; // Bleu moyen de la palette
+      
+      &:hover {
+        color: #00497c !important; // Bleu foncé au survol
+      }
+    }
+  }
+  
+  // Breadcrumb
+  .breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    
+    .breadcrumb-item {
+      a {
+        color: #0074c7; // Bleu moyen de la palette
+        
+        &:hover {
+          color: #00497c; // Bleu foncé au survol
+          text-decoration: underline;
+        }
+      }
+      
+      &.active {
+        color: #384050; // Gris foncé de la palette
+      }
+    }
+  }
+  
+  // Titre h1
+  h1 {
+    color: #00497c !important; // Bleu foncé de la palette
+  }
+  
+  // Titres h2 et h4
+  h2, h4 {
+    color: #00497c !important; // Bleu foncé de la palette
+  }
+  
+  .artisan-header {
+    border-bottom: 2px solid rgba(56, 64, 80, 0.2); // #384050 avec 20% d'opacité
+    padding-bottom: 1rem;
+  }
+  
+  .artisan-image {
+    img {
+      max-height: 400px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .stars {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #384050; // Gris foncé pour le texte des notes
+    
+    .star {
+      color: #cd2c2e; // Rouge de la palette
+      
+      &.star-empty {
+        color: rgba(56, 64, 80, 0.3); // #384050 avec 30% d'opacité
+      }
+      
+      &.star-half {
+        opacity: 0.5;
+      }
+    }
+  }
+  
+  .artisan-info,
+  .artisan-about {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    
+    // Liens dans les informations
+    a {
+      color: #0074c7; // Bleu moyen de la palette
+      
+      &:hover {
+        color: #00497c; // Bleu foncé au survol
+      }
+    }
+    
+    // Paragraphe "À propos"
+    p.text-muted {
+      color: #384050 !important; // Gris foncé de la palette
+    }
+    
+    // Texte dans les listes
+    li {
+      color: #384050; // Gris foncé de la palette
+    }
+  }
+  
+  .contact-form-container {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    
+    h2, h4 {
+      color: #00497c !important; // Bleu foncé de la palette
+    }
+  }
+}
+
+// Desktop (≥ 992px) : 2 colonnes équilibrées, formulaire non sticky
+@media (min-width: 992px) {
+  .artisan-detail {
+    .contact-form-container {
+      position: static;
+    }
+  }
+}
+
+// Tablette (768px - 991px) : 2 colonnes côte à côte
+@media (min-width: 768px) and (max-width: 991px) {
+  .artisan-detail {
+    .contact-form-container {
+      position: static;
+      margin-top: 0;
+    }
+  }
+}
+
+// Mobile (jusqu'à 767px) : 1 colonne
+@media (max-width: 767px) {
+  .artisan-detail {
+    .contact-form-container {
+      position: static;
+      margin-top: 2rem;
+    }
+  }
+}
+

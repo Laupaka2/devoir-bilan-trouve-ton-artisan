@@ -1,0 +1,59 @@
+.artisans-list {
+  min-height: 60vh;
+  background-color: #f1f8fc; // Bleu très clair de la palette
+  
+  // Titre h1 en bleu foncé de la palette
+  h1 {
+    color: #00497c !important; // Bleu foncé de la palette
+  }
+  
+  // Spinner en bleu moyen de la palette
+  .spinner-border.text-primary {
+    color: #0074c7 !important; // Bleu moyen de la palette
+    border-color: #0074c7 !important;
+  }
+  
+  // Alerte "Aucun artisan trouvé"
+  .alert-info {
+    background-color: rgba(0, 116, 199, 0.2) !important; // #0074c7 avec 20% d'opacité
+    border-color: rgba(0, 116, 199, 0.3) !important; // #0074c7 avec 30% d'opacité
+    color: #384050 !important; // Gris foncé de la palette
+    
+    .alert-heading {
+      color: #0074c7 !important; // Bleu moyen de la palette
+    }
+    
+    p {
+      color: #384050 !important; // Gris foncé de la palette
+    }
+    
+    .alert-link {
+      color: #0074c7 !important; // Bleu moyen de la palette
+      
+      &:hover {
+        color: #00497c !important; // Bleu foncé au survol
+      }
+    }
+  }
+}
+
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  
+  .breadcrumb-item {
+    a {
+      color: #0074c7;
+      
+      &:hover {
+        text-decoration: underline;
+        color: #00497c; // Bleu foncé au survol
+      }
+    }
+    
+    &.active {
+      color: #384050; // Gris foncé de la palette
+    }
+  }
+}
+

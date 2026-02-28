@@ -1,0 +1,56 @@
+.contact-form {
+  // Labels des champs
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #384050; // Gris foncé de la palette
+  }
+  
+  // Astérisques obligatoires
+  .text-danger {
+    color: #cd2c2e !important; // Rouge de la palette
+  }
+  
+  .form-control {
+    color: #384050; // Gris foncé de la palette
+    
+    &:focus {
+      border-color: #0074c7;
+      box-shadow: 0 0 0 0.2rem rgba(0, 116, 199, 0.25); // #0074c7 avec 25% d'opacité
+    }
+    
+    &.is-invalid {
+      border-color: #cd2c2e; // Rouge de la palette
+      
+      &:focus {
+        border-color: #cd2c2e;
+        box-shadow: 0 0 0 0.2rem rgba(205, 44, 46, 0.25); // #cd2c2e avec 25% d'opacité
+      }
+    }
+  }
+  
+  // Messages d'erreur
+  .invalid-feedback {
+    display: block;
+    color: #cd2c2e; // Rouge de la palette
+  }
+  
+  // Alertes de succès et d'erreur
+  .alert-success {
+    background-color: rgba(130, 184, 100, 0.2) !important; // #82b864 avec 20% d'opacité
+    border-color: rgba(130, 184, 100, 0.3) !important; // #82b864 avec 30% d'opacité
+    color: #384050 !important; // Gris foncé de la palette
+  }
+  
+  .alert-danger {
+    background-color: rgba(205, 44, 46, 0.1) !important; // #cd2c2e avec 10% d'opacité
+    border-color: rgba(205, 44, 46, 0.3) !important; // #cd2c2e avec 30% d'opacité
+    color: #384050 !important; // Gris foncé de la palette
+  }
+  
+  // Texte d'aide en bas
+  .text-muted {
+    color: #384050 !important; // Gris foncé de la palette
+  }
+}
+

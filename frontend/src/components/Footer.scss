@@ -1,0 +1,38 @@
+.footer {
+  margin-top: auto;
+  
+  &.footer-custom {
+    background-color: #384050 !important; // Gris foncé de la palette (sans opacité)
+    color: rgba(241, 248, 252, 0.5); // #f1f8fc avec 50% d'opacité
+    
+    h5 {
+      color: #0074c7 !important; // Titres en bleu moyen (sans opacité)
+    }
+    
+    // Liens, paragraphes et adresses en #f1f8fc avec 50% d'opacité
+    li,
+    p,
+    address {
+      color: rgba(241, 248, 252, 0.5) !important; // #f1f8fc avec 50% d'opacité
+    }
+    
+    .text-white-50 {
+      color: rgba(241, 248, 252, 0.5) !important; // #f1f8fc avec 50% d'opacité
+    }
+  }
+  
+  a {
+    transition: color 0.3s ease;
+    color: rgba(241, 248, 252, 0.5) !important; // #f1f8fc avec 50% d'opacité
+    
+    &:hover {
+      color: rgba(241, 248, 252, 0.8) !important; // Légèrement plus clair au survol
+    }
+  }
+  
+  address {
+    font-style: normal;
+    line-height: 1.8;
+  }
+}
+

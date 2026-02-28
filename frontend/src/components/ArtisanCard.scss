@@ -1,0 +1,45 @@
+.artisan-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(56, 64, 80, 0.2); // #384050 avec 20% d'opacité
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  .card-title {
+    color: #0074c7;
+    font-weight: 600;
+  }
+  
+  // Paragraphes en gris foncé de la palette
+  .card-text.text-muted {
+    color: #384050 !important; // Gris foncé de la palette
+  }
+  
+  .stars {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+  
+  .star {
+      color: #cd2c2e; // Rouge de la palette pour les étoiles
+    
+    &.star-empty {
+      color: rgba(56, 64, 80, 0.3); // #384050 avec 30% d'opacité
+    }
+    
+    &.star-half {
+      opacity: 0.5;
+    }
+  }
+}
+

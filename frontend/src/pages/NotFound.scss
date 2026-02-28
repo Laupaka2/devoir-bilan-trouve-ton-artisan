@@ -1,0 +1,62 @@
+.not-found {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  background-color: #f1f8fc; // Bleu très clair de la palette
+  
+  .not-found-content {
+    padding: 2rem;
+  }
+  
+  .not-found-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+  }
+  
+  .not-found-image {
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .not-found-svg {
+    max-width: 200px;
+    height: auto;
+  }
+  
+  h1 {
+    color: #00497c; // Bleu foncé de la palette
+  }
+  
+  h2 {
+    color: #384050; // Gris foncé de la palette
+  }
+  
+  // Paragraphes en gris foncé de la palette
+  p {
+    color: #384050 !important; // Gris foncé de la palette
+  }
+  
+  // Bouton "Retour à l'accueil" en vert de la palette
+  .btn-404 {
+    background-color: #82b864 !important; // Vert de la palette
+    border-color: #82b864 !important;
+    color: #f1f8fc !important; // Bleu très clair pour le texte
+    
+    &:hover,
+    &:focus {
+      background-color: #00497c !important; // Bleu foncé au survol
+      border-color: #00497c !important;
+      color: #f1f8fc !important; // Bleu très clair pour le texte
+    }
+    
+    &:active {
+      background-color: #00497c !important;
+      border-color: #00497c !important;
+      color: #f1f8fc !important; // Bleu très clair pour le texte
+    }
+  }
+}
+

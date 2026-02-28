@@ -1,0 +1,48 @@
+const express = require('express');
+const router = express.Router();
+const Categorie = require('../models/Categorie');
+const Specialite = require('../models/Specialite');
+
+// GET /api/categories - Récupérer toutes les catégories avec leurs spécialités
+router.get('/', async (req, res, next) => {
+  try {
+    const categories = await Categorie.findAll({
+      attributes: ['id', 'nom', 'slug'], // Exclure les timestamps
+      include: [{
+        model: Specialite,
+        as: 'specialites',
+        attributes: ['id', 'nom', 'slug'] // Exclure les timestamps
+      }],
+      order: [['nom', 'ASC']]
+    });
+    res.json(categories);
+  } catch (error) {
+    next(error);
+  }
+});
+
+// GET /api/categories/:slug - Récupérer une catégorie par son slug
+router.get('/:slug', async (req, res, next) => {
+  try {
+    const categorie = await Categorie.findOne({
+      where: { slug: req.params.slug },
+      attributes: ['id', 'nom', 'slug'], // Exclure les timestamps
+      include: [{
+        model: Specialite,
+        as: 'specialites',
+        attributes: ['id', 'nom', 'slug'] // Exclure les timestamps
+      }]
+    });
+
+    if (!categorie) {
+      return res.status(404).json({ error: 'Catégorie non trouvée' });
+    }
+
+    res.json(categorie);
+  } catch (error) {
+    next(error);
+  }
+});
+
+module.exports = router;
+

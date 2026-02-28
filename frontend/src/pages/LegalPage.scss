@@ -1,0 +1,19 @@
+.legal-page {
+  min-height: 60vh;
+  background-color: #f1f8fc;
+  
+  .alert-info {
+    background-color: rgba(0, 116, 199, 0.2);
+    border-color: rgba(0, 116, 199, 0.3);
+    color: #384050;
+    
+    .alert-heading {
+      color: #0074c7;
+    }
+    
+    p {
+      color: #384050;
+    }
+  }
+}
+

@@ -1,0 +1,152 @@
+.hero {
+  background-color: #f1f8fc; // Bleu très clair de la palette
+  color: #384050; // Gris foncé pour le texte sur fond clair
+  
+  // Titre h1 de la section hero
+  h1 {
+    color: #00497c !important; // Bleu foncé de la palette
+  }
+  
+  // Paragraphe lead
+  .lead {
+    color: #384050 !important; // Gris foncé de la palette
+  }
+}
+
+.how-it-works {
+  background-color: #f1f8fc; // Bleu très clair de la palette
+  
+  // Titre h2 de la section
+  h2 {
+    color: #00497c !important; // Bleu foncé de la palette
+  }
+  
+  .step-card {
+    height: 100%;
+    border: 1px solid rgba(56, 64, 80, 0.2); // #384050 avec 20% d'opacité
+    border-radius: 8px;
+    background-color: #ffffff; // Fond blanc pour contraste
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    // Titres sous les numéros
+    h4, h5 {
+      color: #0074c7 !important; // Bleu moyen de la palette
+    }
+    
+    // Paragraphes en gris foncé de la palette
+    p.text-muted {
+      color: #384050 !important; // Gris foncé de la palette
+    }
+  }
+  
+  .step-number {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(180deg, #0074c7 0%, #00497c 100%) !important; // Dégradé vertical plus prononcé
+    background-color: #0074c7 !important; // Couleur de fallback
+    color: white !important; // Texte blanc pour contraste
+    
+    // S'assurer que la couleur est bien appliquée
+    &,
+    &.bg-primary-custom {
+      background: linear-gradient(180deg, #0074c7 0%, #00497c 100%) !important;
+      background-color: #0074c7 !important;
+      color: white !important;
+    }
+  }
+}
+
+.artisans-du-mois {
+  background-color: #f1f8fc; // Bleu très clair de la palette
+  
+  // Titre h2 de la section
+  h2 {
+    color: #00497c !important; // Bleu foncé de la palette
+  }
+  
+  // Spinner de chargement
+  .spinner-border.text-primary {
+    color: #0074c7 !important; // Bleu moyen de la palette
+    border-color: #0074c7 !important;
+  }
+  
+  // Message "Aucun artisan du mois"
+  p.text-muted {
+    color: #384050 !important; // Gris foncé de la palette
+  }
+  
+  .artisan-du-mois-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(56, 64, 80, 0.2); // #384050 avec 20% d'opacité
+    background-color: #ffffff; // Fond blanc pour les cartes pour contraste
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-img-top {
+      height: 250px;
+      object-fit: cover;
+      width: 100%;
+    }
+    
+    // Titre h5 de la carte
+    .card-title {
+      color: #0074c7 !important; // Bleu moyen de la palette
+      font-weight: 600;
+    }
+    
+    // Paragraphes en gris foncé de la palette
+    .card-text.text-muted {
+      color: #384050 !important; // Gris foncé de la palette
+    }
+  }
+  
+  // Bouton "Voir la fiche" pour les artisans du mois
+  .btn-artisan-du-mois {
+    background-color: #82b864 !important; // Vert de la palette
+    border-color: #82b864 !important;
+    color: #f1f8fc !important; // Bleu très clair pour le texte
+    
+    &:hover,
+    &:focus {
+      background-color: #00497c !important; // Bleu foncé au survol
+      border-color: #00497c !important;
+      color: #f1f8fc !important; // Bleu très clair pour le texte
+    }
+    
+    &:active {
+      background-color: #00497c !important; // Bleu foncé au clic
+      border-color: #00497c !important;
+      color: #f1f8fc !important; // Bleu très clair pour le texte
+    }
+  }
+  
+  
+  .stars {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    line-height: 1;
+    
+    .star {
+      color: #cd2c2e; // Rouge de la palette pour les étoiles
+      
+      &.star-empty {
+        color: rgba(56, 64, 80, 0.3); // #384050 avec 30% d'opacité
+      }
+      
+      &.star-half {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+

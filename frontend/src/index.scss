@@ -1,0 +1,201 @@
+// Configuration Bootstrap personnalisée selon les maquettes Figma
+// Variables de grille et containers
+$grid-columns: 12; // Par défaut 12 colonnes (desktop)
+$grid-gutter-width: 24px; // Gouttière par défaut (tablette et desktop)
+
+// Breakpoints Bootstrap
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,  // Tablette
+  lg: 992px,  // Desktop
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Containers max-width
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+// Import de Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Police Graphik - Version WOFF (optimisée pour le web)
+// Les fichiers sont dans src/fonts/ pour que Sass puisse les résoudre
+@font-face {
+  font-family: 'Graphik';
+  src: url('./fonts/Graphik-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('./fonts/Graphik-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('./fonts/Graphik-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Variables de couleurs (selon la palette fournie)
+$primary-color: #0074c7; // Bleu moyen (couleur principale)
+$secondary-color: #00497c; // Bleu foncé
+$accent-color: #cd2c2e; // Rouge (couleur d'accent)
+$success-color: #82b864; // Vert
+$bg-light-blue: #f1f8fc; // Bleu très clair (fond)
+$text-dark: #384050; // Gris foncé (texte)
+$text-light: #384050; // Gris foncé de la palette (même que text-dark)
+$bg-light: #f1f8fc; // Bleu très clair de la palette
+$white: #FFFFFF;
+
+// Application de la police Graphik
+html {
+  overflow-x: hidden; // Empêcher le scroll horizontal
+}
+
+body {
+  font-family: 'Graphik', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $text-dark;
+  background-color: #f1f8fc; // Bleu très clair de la palette
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+// Tous les titres en bleu foncé (#00497c)
+h1, h2, h3, h4, h5, h6 {
+  color: #00497c; // Bleu foncé de la palette
+  font-weight: 600;
+}
+
+// Styles globaux
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+// Utilisation de la palette de couleurs officielle
+// #f1f8fc - Bleu très clair (fond)
+// #0074c7 - Bleu moyen (couleur principale)
+// #00497c - Bleu foncé (couleur secondaire)
+// #384050 - Gris foncé (texte)
+// #cd2c2e - Rouge (accent)
+// #82b864 - Vert (succès)
+
+// Accessibilité
+:focus-visible {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// Classes utilitaires
+.text-primary-custom {
+  color: $primary-color;
+}
+
+.bg-primary-custom {
+  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%); // Dégradé bleu moyen vers bleu foncé
+}
+
+.btn-primary-custom {
+  background-color: #82b864 !important; // Vert de la palette
+  border-color: #82b864 !important;
+  color: #f1f8fc !important; // Bleu très clair pour le texte
+
+  &:hover,
+  &:focus {
+    background-color: #00497c !important; // Bleu foncé au survol
+    border-color: #00497c !important;
+    color: #f1f8fc !important; // Bleu très clair pour le texte
+  }
+  
+  &:active {
+    background-color: #00497c !important; // Bleu foncé au clic
+    border-color: #00497c !important;
+    color: #f1f8fc !important; // Bleu très clair pour le texte
+  }
+  
+  &:disabled {
+    background-color: rgba(130, 184, 100, 0.5) !important; // Vert avec opacité
+    border-color: rgba(130, 184, 100, 0.5) !important;
+    color: rgba(241, 248, 252, 0.7) !important; // Bleu très clair avec opacité
+  }
+}
+
+// Configuration des containers selon les maquettes Figma
+// Mobile : padding 16px, 4 colonnes, gouttière 16px
+// Tablette : padding 24px, 8 colonnes, gouttière 24px
+// Desktop : padding 120px, 12 colonnes, gouttière 24px
+
+.container,
+.container-fluid {
+  // Mobile (par défaut, < 768px)
+  padding-left: 16px;
+  padding-right: 16px;
+  
+  // Tablette (≥ 768px)
+  @media (min-width: 768px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  
+  // Desktop (≥ 992px)
+  @media (min-width: 992px) {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+}
+
+// Configuration de la grille avec gouttières personnalisées
+.row {
+  // Mobile : gouttière 16px
+  --bs-gutter-x: 16px;
+  --bs-gutter-y: 16px;
+  
+  // Tablette : gouttière 24px
+  @media (min-width: 768px) {
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 24px;
+  }
+  
+  // Desktop : gouttière 24px
+  @media (min-width: 992px) {
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 24px;
+  }
+}
+
+// Classes personnalisées pour les colonnes selon les breakpoints
+// Mobile : 4 colonnes max
+// Tablette : 8 colonnes max
+// Desktop : 12 colonnes max
+// Les classes Bootstrap col-md-* et col-lg-* fonctionneront normalement
+

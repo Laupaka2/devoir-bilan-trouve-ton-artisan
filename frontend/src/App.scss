@@ -1,0 +1,21 @@
+// Styles spécifiques à l'application
+
+.App {
+  min-height: 100vh;
+  background-color: #f1f8fc; // Bleu très clair de la palette pour le body
+  // Ne pas mettre overflow-y ici, laisser le scroll natif du body fonctionner
+}
+
+// Espacement pour le contenu principal
+main {
+  padding-top: 0;
+  background-color: #f1f8fc; // Bleu très clair de la palette
+}
+
+// Responsive
+@media (max-width: 768px) {
+  main {
+    padding-top: 0;
+  }
+}
+
