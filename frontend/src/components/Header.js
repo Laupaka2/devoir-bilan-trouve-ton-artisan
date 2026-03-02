@@ -15,7 +15,7 @@ const Header = () => {
     setIsLoading(true);
     getCategories()
       .then(response => {
-        setCategories(response.data);
+        setCategories(Array.isArray(response?.data) ? response.data : []);
         setIsLoading(false);
       })
       .catch(error => {

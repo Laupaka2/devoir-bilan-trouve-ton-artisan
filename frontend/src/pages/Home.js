@@ -19,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     getArtisansDuMois()
       .then(response => {
-        setArtisansDuMois(response.data);
+        setArtisansDuMois(Array.isArray(response?.data) ? response.data : []);
         setLoading(false);
       })
       .catch(error => {

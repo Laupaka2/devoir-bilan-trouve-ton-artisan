@@ -50,7 +50,7 @@ const ArtisansList = () => {
 
         // Récupérer les artisans
         const artisansResponse = await getArtisans(params);
-        setArtisans(artisansResponse.data);
+        setArtisans(Array.isArray(artisansResponse?.data) ? artisansResponse.data : []);
         setLoading(false);
       } catch (error) {
         console.error('Erreur lors du chargement des données:', error);
