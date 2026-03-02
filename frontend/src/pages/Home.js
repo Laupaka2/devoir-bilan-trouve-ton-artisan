@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getArtisansDuMois } from '../services/api';
-import ArtisanCard from '../components/ArtisanCard';
 import './Home.scss';
 
 const Home = () => {
