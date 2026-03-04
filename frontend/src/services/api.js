@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Client API centralisé. J'utilise axios avec une base URL configurable (env ou localhost).
+ * Toutes les requêtes vers le backend passent par ici ; j'ai ajouté un intercepteur pour logger les erreurs.
+ */
 import axios from 'axios';
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
@@ -9,7 +14,7 @@ const api = axios.create({
   }
 });
 
-// Gestion des erreurs globales
+// Intercepteur : je log les erreurs côté client avant de les remonter
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -27,15 +32,15 @@ api.interceptors.response.use(
   }
 );
 
-// API pour les catégories
+// ——— Catégories ———
 export const getCategories = () => api.get('/categories');
 export const getCategoryBySlug = (slug) => api.get(`/categories/${slug}`);
 
-// API pour les spécialités
+// ——— Spécialités ———
 export const getSpecialites = () => api.get('/specialites');
 export const getSpecialitesByCategorie = (categorieId) => api.get(`/specialites/categorie/${categorieId}`);
 
-// API pour les artisans
+// ——— Artisans (liste avec filtres optionnels : recherche, catégorie, artisan du mois) ———
 export const getArtisans = (params = {}) => {
   const queryParams = new URLSearchParams();
   if (params.search) queryParams.append('search', params.search);
@@ -50,7 +55,7 @@ export const getArtisans = (params = {}) => {
 export const getArtisanById = (id) => api.get(`/artisans/${id}`);
 export const getArtisansDuMois = () => api.get('/artisans/du-mois');
 
-// API pour les contacts
+// ——— Contacts (envoi du formulaire vers l'API) ———
 export const createContact = (data) => api.post('/contacts', data);
 
 export default api;

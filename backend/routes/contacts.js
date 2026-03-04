@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Route POST /contacts : validation express-validator (nom, email, objet, message, artisan_id),
+ * création en BDD, envoi email optionnel à l'artisan si SMTP configuré.
+ */
 const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
@@ -5,7 +10,6 @@ const Contact = require('../models/Contact');
 const Artisan = require('../models/Artisan');
 const nodemailer = require('nodemailer');
 
-// Configuration du transporteur email (à configurer selon votre environnement)
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST || 'smtp.gmail.com',
   port: process.env.EMAIL_PORT || 587,
@@ -16,7 +20,6 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// Validation des données du formulaire de contact
 const contactValidation = [
   body('nom')
     .trim()
@@ -39,10 +42,8 @@ const contactValidation = [
     .withMessage('L\'ID de l\'artisan est requis')
 ];
 
-// POST /api/contacts - Créer un nouveau contact
 router.post('/', contactValidation, async (req, res, next) => {
   try {
-    // Vérification des erreurs de validation
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -50,13 +51,11 @@ router.post('/', contactValidation, async (req, res, next) => {
 
     const { artisan_id, nom, email, objet, message } = req.body;
 
-    // Vérifier que l'artisan existe
     const artisan = await Artisan.findByPk(artisan_id);
     if (!artisan) {
       return res.status(404).json({ error: 'Artisan non trouvé' });
     }
 
-    // Créer le contact dans la base de données
     const contact = await Contact.create({
       artisan_id,
       nom: nom.trim(),
@@ -64,8 +63,6 @@ router.post('/', contactValidation, async (req, res, next) => {
       objet: objet.trim(),
       message: message.trim()
     });
-
-    // Envoyer l'email à l'artisan (si la configuration email est disponible)
     if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
       try {
         await transporter.sendMail({
@@ -96,7 +93,6 @@ Ce message a été envoyé depuis le formulaire de contact de Trouve ton artisan
         });
       } catch (emailError) {
         console.error('Erreur lors de l\'envoi de l\'email:', emailError);
-        // On continue même si l'email échoue, le contact est quand même enregistré
       }
     }
 

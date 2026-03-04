@@ -1,3 +1,7 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Page légale générique (mentions, données personnelles, accessibilité, cookies). Titre dynamique, contenu "en construction".
+ */
 import React, { useEffect } from 'react';
 import './LegalPage.scss';
 

@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * En-tête : logo, menu des catégories (depuis l'API), recherche et menu burger responsive.
+ * J'ai séparé la recherche mobile (toujours visible) et desktop (dans le menu).
+ */
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getCategories } from '../services/api';
@@ -11,7 +16,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Charger les catégories depuis l'API
     setIsLoading(true);
     getCategories()
       .then(response => {

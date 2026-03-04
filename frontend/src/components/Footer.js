@@ -1,3 +1,7 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Pied de page : liens pages légales, adresse Région AURA, à propos. Année dynamique.
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';

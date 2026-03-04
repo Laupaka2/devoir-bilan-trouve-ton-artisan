@@ -1,9 +1,12 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Routes spécialités : liste (avec catégorie), par catégorie, par id.
+ */
 const express = require('express');
 const router = express.Router();
 const Specialite = require('../models/Specialite');
 const Categorie = require('../models/Categorie');
 
-// GET /api/specialites - Récupérer toutes les spécialités
 router.get('/', async (req, res, next) => {
   try {
     const specialites = await Specialite.findAll({
@@ -20,7 +23,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// GET /api/specialites/categorie/:categorieId - Récupérer les spécialités d'une catégorie
 router.get('/categorie/:categorieId', async (req, res, next) => {
   try {
     const specialites = await Specialite.findAll({
@@ -38,7 +40,6 @@ router.get('/categorie/:categorieId', async (req, res, next) => {
   }
 });
 
-// GET /api/specialites/:id - Récupérer une spécialité par son ID
 router.get('/:id', async (req, res, next) => {
   try {
     const specialite = await Specialite.findByPk(req.params.id, {

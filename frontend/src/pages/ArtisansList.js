@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Liste des artisans : par catégorie (slug) ou résultats de recherche (query ?search=).
+ * J'affiche un fil d'Ariane, le titre adapté au contexte et les cartes via ArtisanCard.
+ */
 import React, { useState, useEffect } from 'react';
 import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { getArtisans, getCategoryBySlug } from '../services/api';
@@ -12,7 +17,7 @@ const ArtisansList = () => {
   const [loading, setLoading] = useState(true);
   const searchTerm = searchParams.get('search');
 
-  // SEO : titre et meta description selon le contexte
+  // Titre de page dynamique selon catégorie ou recherche
   useEffect(() => {
     const titre = searchTerm
       ? `Résultats pour "${searchTerm}" - Trouve ton artisan`

@@ -1,18 +1,18 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Page 404 : titre et meta pour le SEO, image ou fallback SVG, lien retour accueil.
+ */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './NotFound.scss';
 
 const NotFound = () => {
-  // Référencement : Mise à jour du titre et de la description pour les moteurs de recherche
   useEffect(() => {
     document.title = 'Page non trouvée - Trouve ton artisan';
-    
-    // Mise à jour de la meta description
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'La page que vous avez demandée n\'existe pas. Retournez à la page d\'accueil pour trouver un artisan en Auvergne-Rhône-Alpes.');
     } else {
-      // Créer la meta description si elle n'existe pas
       const meta = document.createElement('meta');
       meta.name = 'description';
       meta.content = 'La page que vous avez demandée n\'existe pas. Retournez à la page d\'accueil pour trouver un artisan en Auvergne-Rhône-Alpes.';
@@ -32,7 +32,6 @@ const NotFound = () => {
                   alt="Page non trouvée - Erreur 404"
                   className="not-found-image"
                   onError={(e) => {
-                    // Si l'image n'existe pas, afficher un symbole SVG
                     e.target.style.display = 'none';
                     const container = e.target.parentElement;
                     if (container && !container.querySelector('.not-found-svg')) {

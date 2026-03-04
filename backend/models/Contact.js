@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Modèle Sequelize Contact (table contacts) : artisan_id, nom, email, objet, message, lu.
+ * Validation des longueurs. Pas de updatedAt ; index sur artisan_id et lu.
+ */
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const Artisan = require('./Artisan');
@@ -66,7 +71,6 @@ const Contact = sequelize.define('Contact', {
   ]
 });
 
-// Relations
 Contact.belongsTo(Artisan, { foreignKey: 'artisan_id', as: 'artisan' });
 Artisan.hasMany(Contact, { foreignKey: 'artisan_id', as: 'contacts' });
 

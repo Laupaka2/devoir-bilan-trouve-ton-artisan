@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Modèle Sequelize Artisan (table artisans) : nom, email, note, spécialité, image, artisan_du_mois, etc.
+ * Relations : belongsTo Specialite. Index sur nom, specialite_id, artisan_du_mois.
+ */
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const Specialite = require('./Specialite');
@@ -93,7 +98,6 @@ const Artisan = sequelize.define('Artisan', {
   ]
 });
 
-// Relations
 Artisan.belongsTo(Specialite, { foreignKey: 'specialite_id', as: 'specialite' });
 Specialite.hasMany(Artisan, { foreignKey: 'specialite_id', as: 'artisans' });
 

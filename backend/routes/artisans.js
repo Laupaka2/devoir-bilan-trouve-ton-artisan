@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Routes artisans : liste (filtres search, categorie_id, artisan_du_mois), du-mois, détail par id.
+ * Pour la recherche par nom j'échappe les apostrophes et j'utilise une requête paramétrée pour éviter l'injection SQL.
+ */
 const express = require('express');
 const router = express.Router();
 const { Op, Sequelize } = require('sequelize');
@@ -6,7 +11,6 @@ const Specialite = require('../models/Specialite');
 const Categorie = require('../models/Categorie');
 const sequelize = require('../config/database');
 
-// GET /api/artisans - Récupérer tous les artisans avec filtres optionnels
 router.get('/', async (req, res, next) => {
   try {
     const { search, specialite_id, categorie_id, artisan_du_mois } = req.query;
@@ -22,17 +26,13 @@ router.get('/', async (req, res, next) => {
       }]
     }];
     
-    // Filtre par catégorie (via la spécialité)
     if (categorie_id) {
       include[0].where = {
         categorie_id: categorie_id
       };
     }
     
-    // Construire les conditions where
     const whereConditions = {};
-    
-    // Appliquer les filtres
     if (specialite_id) {
       whereConditions.specialite_id = specialite_id;
     }
@@ -40,12 +40,8 @@ router.get('/', async (req, res, next) => {
       whereConditions.artisan_du_mois = true;
     }
     
-    // Recherche insensible à la casse sur le nom de l'artisan
     if (search) {
-      // Échapper les apostrophes pour éviter les injections SQL
       const escapedSearch = search.replace(/'/g, "''").replace(/\\/g, '\\\\');
-      // Faire une requête SQL brute pour trouver les IDs des artisans correspondants
-      // Cela évite l'ambiguïté de colonne avec les JOINs
       const results = await sequelize.query(
         `SELECT id FROM artisans WHERE LOWER(nom) LIKE LOWER(:search)`,
         {
@@ -53,16 +49,12 @@ router.get('/', async (req, res, next) => {
           type: Sequelize.QueryTypes.SELECT
         }
       );
-      
-      // Vérifier si des résultats ont été trouvés
       if (Array.isArray(results) && results.length > 0) {
         const artisanIds = results.map(r => r.id);
-        // Filtrer par les IDs trouvés
         whereConditions.id = {
           [Op.in]: artisanIds
         };
       } else {
-        // Aucun artisan trouvé, retourner un tableau vide
         return res.json([]);
       }
     }
@@ -83,7 +75,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// GET /api/artisans/du-mois - Récupérer les artisans du mois (limité à 3)
 router.get('/du-mois', async (req, res, next) => {
   try {
     const artisans = await Artisan.findAll({
@@ -108,7 +99,6 @@ router.get('/du-mois', async (req, res, next) => {
   }
 });
 
-// GET /api/artisans/:id - Récupérer un artisan par son ID
 router.get('/:id', async (req, res, next) => {
   try {
     const artisan = await Artisan.findByPk(req.params.id, {

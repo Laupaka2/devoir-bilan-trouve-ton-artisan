@@ -1,7 +1,8 @@
--- Script de création de la base de données pour "Trouve ton artisan"
--- Base de données : trouve_ton_artisan
+-- Devoir bilan – Trouve ton artisan
+-- Script de création de la base : tables categories, specialites, artisans, contacts.
+-- J'ai mis les FK avec ON DELETE CASCADE et des index pour les recherches (nom, specialite_id, artisan_du_mois, etc.).
 
--- Suppression des tables si elles existent (dans l'ordre inverse des dépendances)
+-- Suppression des tables si elles existent (ordre inverse des dépendances)
 DROP TABLE IF EXISTS contacts;
 DROP TABLE IF EXISTS artisans;
 DROP TABLE IF EXISTS specialites;

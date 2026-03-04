@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Carte artisan pour les listes : image, nom, note en étoiles, spécialité, localisation, lien fiche.
+ * J'affiche une image de repli si l'URL échoue et j'ai mis les étoiles en aria-label pour l'accessibilité.
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ArtisanCard.scss';

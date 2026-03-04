@@ -1,7 +1,11 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Configuration Sequelize/MySQL. J'ai prévu les variables Railway (MYSQLHOST, etc.) et les variables
+ * classiques (DB_HOST, DB_USER...). Timestamps et snake_case pour les colonnes.
+ */
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-// Support des variables Railway (MYSQLHOST, MYSQLUSER...) et standards (DB_HOST, DB_USER...)
 const dbConfig = {
   host: process.env.DB_HOST || process.env.MYSQLHOST || 'localhost',
   port: parseInt(process.env.DB_PORT || process.env.MYSQLPORT || '3306', 10),
@@ -27,7 +31,7 @@ const sequelize = new Sequelize(
     },
     define: {
       timestamps: true,
-      underscored: true,  // Utilise snake_case pour les colonnes (created_at au lieu de createdAt)
+      underscored: true,
       freezeTableName: true
     }
   }

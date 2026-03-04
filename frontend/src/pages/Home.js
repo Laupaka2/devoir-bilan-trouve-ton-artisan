@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Page d'accueil : hero, étapes "Comment trouver mon artisan", et bloc artisans du mois.
+ * J'ai mis en place le SEO (titre + meta description) et l'affichage des étoiles pour les notes.
+ */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getArtisansDuMois } from '../services/api';
@@ -7,7 +12,7 @@ const Home = () => {
   const [artisansDuMois, setArtisansDuMois] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // SEO : titre et meta description
+  // Titre et meta pour le référencement
   useEffect(() => {
     document.title = 'Trouve ton artisan - Plateforme des artisans Auvergne-Rhône-Alpes';
     const metaDesc = document.querySelector('meta[name="description"]');

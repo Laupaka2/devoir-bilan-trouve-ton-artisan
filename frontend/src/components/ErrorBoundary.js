@@ -1,3 +1,7 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Périmètre d'erreur React : en cas d'exception dans l'arbre, j'affiche un message et un bouton "Recharger".
+ */
 import React from 'react';
 
 class ErrorBoundary extends React.Component {

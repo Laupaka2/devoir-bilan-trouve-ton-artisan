@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Formulaire de contact : nom, email, objet, message. Validation côté client (longueurs, format email).
+ * J'envoie les données au parent qui appelle l'API ; j'affiche succès ou erreur et je réinitialise en cas de succès.
+ */
 import React, { useState } from 'react';
 import './ContactForm.scss';
 
@@ -18,7 +23,6 @@ const ContactForm = ({ onSubmit, artisanNom }) => {
       ...prev,
       [name]: value
     }));
-    // Effacer l'erreur du champ modifié
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -27,6 +31,7 @@ const ContactForm = ({ onSubmit, artisanNom }) => {
     }
   };
 
+  // Règles de validation (alignées avec le backend express-validator)
   const validate = () => {
     const newErrors = {};
 

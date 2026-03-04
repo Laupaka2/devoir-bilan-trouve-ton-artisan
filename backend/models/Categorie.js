@@ -1,3 +1,7 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Modèle Sequelize Categorie (table categories) : id, nom, slug (unique). Timestamps en snake_case.
+ */
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 

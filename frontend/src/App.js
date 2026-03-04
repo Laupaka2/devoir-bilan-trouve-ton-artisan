@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Point d'entrée principal de l'application React.
+ * J'ai structuré les routes : accueil, liste par catégorie, fiche artisan, pages légales et 404.
+ */
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';

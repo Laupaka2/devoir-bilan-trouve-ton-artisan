@@ -1,3 +1,8 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Fiche détaillée d'un artisan : infos, à propos, formulaire de contact.
+ * J'ai relié le formulaire à l'API contacts et géré le SEO dynamique (titre + description).
+ */
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getArtisanById, createContact } from '../services/api';
@@ -10,7 +15,7 @@ const ArtisanDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // SEO : titre et meta description dynamiques selon l'artisan
+  // Titre et meta selon l'artisan pour le SEO
   useEffect(() => {
     if (artisan) {
       document.title = `${artisan.nom} - Fiche artisan - Trouve ton artisan`;

@@ -1,3 +1,7 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Modèle Sequelize Specialite (table specialites) : id, nom, slug, categorie_id. Relation belongsTo Categorie.
+ */
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const Categorie = require('./Categorie');
@@ -32,7 +36,6 @@ const Specialite = sequelize.define('Specialite', {
   updatedAt: 'updated_at'
 });
 
-// Relations
 Specialite.belongsTo(Categorie, { foreignKey: 'categorie_id', as: 'categorie' });
 Categorie.hasMany(Specialite, { foreignKey: 'categorie_id', as: 'specialites' });
 

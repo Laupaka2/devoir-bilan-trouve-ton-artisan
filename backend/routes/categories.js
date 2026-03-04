@@ -1,17 +1,20 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Routes catégories : liste avec spécialités, une catégorie par slug.
+ */
 const express = require('express');
 const router = express.Router();
 const Categorie = require('../models/Categorie');
 const Specialite = require('../models/Specialite');
 
-// GET /api/categories - Récupérer toutes les catégories avec leurs spécialités
 router.get('/', async (req, res, next) => {
   try {
     const categories = await Categorie.findAll({
-      attributes: ['id', 'nom', 'slug'], // Exclure les timestamps
+      attributes: ['id', 'nom', 'slug'],
       include: [{
         model: Specialite,
         as: 'specialites',
-        attributes: ['id', 'nom', 'slug'] // Exclure les timestamps
+        attributes: ['id', 'nom', 'slug']
       }],
       order: [['nom', 'ASC']]
     });
@@ -21,16 +24,15 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// GET /api/categories/:slug - Récupérer une catégorie par son slug
 router.get('/:slug', async (req, res, next) => {
   try {
     const categorie = await Categorie.findOne({
       where: { slug: req.params.slug },
-      attributes: ['id', 'nom', 'slug'], // Exclure les timestamps
+      attributes: ['id', 'nom', 'slug'],
       include: [{
         model: Specialite,
         as: 'specialites',
-        attributes: ['id', 'nom', 'slug'] // Exclure les timestamps
+        attributes: ['id', 'nom', 'slug']
       }]
     });
 

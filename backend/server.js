@@ -1,16 +1,20 @@
+/**
+ * Devoir bilan – Trouve ton artisan
+ * Serveur API Node.js/Express. J'ai configuré helmet, CORS (origine front), limite JSON 10 Mo,
+ * routes (categories, specialites, artisans, contacts), 404 et gestion d'erreurs. Démarrage après connexion MySQL.
+ */
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 const sequelize = require('./config/database');
 
-// Chargement des variables d'environnement
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middlewares de sécurité
+// Sécurité : en-têtes HTTP (helmet) et CORS limité au front
 app.use(helmet());
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' && process.env.FRONTEND_URL
@@ -20,7 +24,6 @@ app.use(cors({
   methods: ['GET', 'POST', 'OPTIONS']
 }));
 
-// Middlewares pour parser le JSON
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
@@ -30,7 +33,6 @@ const specialitesRoutes = require('./routes/specialites');
 const artisansRoutes = require('./routes/artisans');
 const contactsRoutes = require('./routes/contacts');
 
-// Route racine de l'API
 app.get('/', (req, res) => {
   res.json({
     message: 'API Trouve ton artisan',
@@ -46,7 +48,6 @@ app.get('/', (req, res) => {
   });
 });
 
-// Route racine de l'API (/api)
 app.get('/api', (req, res) => {
   res.json({
     message: 'API Trouve ton artisan',
@@ -66,17 +67,14 @@ app.use('/api/specialites', specialitesRoutes);
 app.use('/api/artisans', artisansRoutes);
 app.use('/api/contacts', contactsRoutes);
 
-// Route de santé
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'API Trouve ton artisan' });
 });
 
-// Gestion des erreurs 404
 app.use((req, res) => {
   res.status(404).json({ error: 'Route non trouvée' });
 });
 
-// Gestion des erreurs globales
 app.use((err, req, res, next) => {
   console.error('Erreur:', err);
   res.status(err.status || 500).json({
@@ -86,7 +84,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Connexion à la base de données et démarrage du serveur
 sequelize.authenticate()
   .then(() => {
     console.log('✅ Connexion à la base de données réussie');
