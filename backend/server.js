@@ -84,21 +84,23 @@ app.use((err, req, res, next) => {
   });
 });
 
-sequelize.authenticate()
-  .then(() => {
-    console.log('✅ Connexion à la base de données réussie');
-    return sequelize.sync({ alter: false });
-  })
-  .then(() => {
-    console.log('✅ Modèles synchronisés avec la base de données');
-    app.listen(PORT, () => {
-      console.log(`🚀 Serveur démarré sur le port ${PORT}`);
+if (require.main === module) {
+  sequelize.authenticate()
+    .then(() => {
+      console.log('✅ Connexion à la base de données réussie');
+      return sequelize.sync({ alter: false });
+    })
+    .then(() => {
+      console.log('✅ Modèles synchronisés avec la base de données');
+      app.listen(PORT, () => {
+        console.log(`🚀 Serveur démarré sur le port ${PORT}`);
+      });
+    })
+    .catch((error) => {
+      console.error('❌ Erreur de connexion à la base de données:', error);
+      process.exit(1);
     });
-  })
-  .catch((error) => {
-    console.error('❌ Erreur de connexion à la base de données:', error);
-    process.exit(1);
-  });
+}
 
 module.exports = app;
 

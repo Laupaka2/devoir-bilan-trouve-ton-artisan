@@ -173,6 +173,26 @@ Les URLs du site (Vercel) et du dépôt GitHub sont indiquées dans le **PDF du 
 
 ---
 
+## Tests automatisés
+
+**Frontend** (Jest + React Testing Library) — validation du formulaire de contact :
+
+```bash
+cd frontend
+npm test
+```
+
+**Backend** (Jest + Supertest) — routes `POST /api/contacts` et `GET /api/artisans` :
+
+```bash
+cd backend
+npm test
+```
+
+Les tests backend mockent Sequelize et n’ont pas besoin d’une base MySQL locale.
+
+---
+
 ## Sécurité et bonnes pratiques
 
 Sur l’API, j’ai mis en place :
